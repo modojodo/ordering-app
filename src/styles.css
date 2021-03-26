@@ -1,0 +1,68 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#root {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #fff;
+  border-radius: 0.25em;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
+  color: #4a4a4a;
+  min-height: 4em;
+  margin: 1em;
+  padding: 1em;
+  min-width: 15em;
+}
+
+.italicized {
+  font-style: italic;
+}
+
+.price {
+  align-self: center;
+  background-color: black;
+  border: 0.3em solid black;
+  border-radius: 0.2em;
+  color: #fff;
+  max-width: 3em;
+}
+
+ul,
+li {
+  padding: 0;
+  list-style: none;
+}
+
+.button {
+  background-color: #fff;
+  border: 0.11em solid #dbdbdb;
+  border-radius: 0.25em;
+  color: #363636;
+  padding: 0.25em 1em 0.25em 1em;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:active {
+  background-color: #f5f5f5;
+  border: 0.11em solid #dbdbdb;
+  border-radius: 0.25em;
+  color: #363636;
+  padding: 0.25em 1em 0.25em 1em;
+  cursor: pointer;
+  outline: none;
+}
