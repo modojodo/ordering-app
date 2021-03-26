@@ -46,27 +46,43 @@ export default function App() {
 
   function updateOrder(item) {
     setState((prevState) => {
-      const cart = { ...prevState.cart };
-      if (cart[item.name]) {
-        cart[item.name].qty += 1;
+      const hasItemInCart = prevState.cart[item.name];
+      let cartItem = hasItemInCart ? { ...hasItemInCart } : {};
+      if (hasItemInCart) {
+        cartItem.qty += 1;
       } else {
-        cart[item.name] = {
+        cartItem = {
           qty: 1,
           price: item.price
         };
       }
 
       return {
-        ...state,
-        cart
+        ...prevState,
+        cart: {
+          ...prevState.cart,
+          [item.name]: cartItem
+        }
+      };
+    });
+  }
+
+  function placeOrder(total) {
+    setState((prevState) => {
+      const orders = [...prevState.orders];
+      orders.push({ items: prevState.cart, total });
+      return {
+        ...prevState,
+        cart: {},
+        orders
       };
     });
   }
   return (
     <>
       <Menu update={updateOrder} menu={state.menu} />
-      <Cart cart={state.cart} />
-      <Orders />
+      <Cart cart={state.cart} placeOrder={placeOrder} />
+      <Orders orders={state.orders} />
     </>
   );
 }

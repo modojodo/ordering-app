@@ -2,8 +2,13 @@ import React from "react";
 import "./cart.css";
 
 export default function Cart(props) {
-  const { cart } = props;
-  const cartItems = Object.entries(cart);
+  const { cart, placeOrder } = props;
+  const cartItems = Object.entries({ ...cart });
+  const total = cartItems.reduce((acc, [name, details]) => {
+    const price = +details.price * +details.qty;
+    acc += +price;
+    return acc;
+  }, 0);
 
   return (
     <div className="card">
@@ -20,7 +25,12 @@ export default function Cart(props) {
           <p className="italicized">No items in the cart</p>
         )}
       </div>
-      <button className="button">Place order</button>
+      <p className="cart-item">
+        Total: <span className="price total">{total}</span>
+      </p>
+      <button className="button" onClick={() => placeOrder(total)}>
+        Place order
+      </button>
     </div>
   );
 }

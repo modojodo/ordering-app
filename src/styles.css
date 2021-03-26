@@ -41,6 +41,10 @@ body {
   max-width: 3em;
 }
 
+.total{
+  color: greenyellow;
+}
+
 ul,
 li {
   padding: 0;
